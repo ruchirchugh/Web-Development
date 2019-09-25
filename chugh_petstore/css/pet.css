@@ -1,0 +1,100 @@
+body {
+     color: #666666;
+     background-color: #FFFFFF;
+     font-family: Arial, Verdana, sans-serif;
+}
+ header {
+     color: #FFFFFF;
+     background-color: #000033;
+     font-family: Arial, Verdana, sans-serif;
+     Padding: 0;
+     margin-bottom: : -20px;
+}
+ .row {
+     height: 100%;
+     display: -webkit-flex;
+     display: flex;
+     flex-wrap: wrap;
+}
+ #c1{
+     background-color: #90C7E3 ;
+     width:15%;
+     position: relative;
+     float: left;
+     display: flex;
+}
+ #c2 {
+     width:85%;
+     position: relative;
+     height: 100%;
+     float: right;
+}
+ h1 {
+     line-height: 200%;
+     Padding: 0;
+     margin-block-end: unset;
+}
+ h2 {
+     color: #3399CC;
+     Padding: 0;
+     font-family: Georgia, serif;
+}
+ nav {
+     font-weight:bold;
+     background-color: #90C7E3 ;
+     margin-left: 0px;
+     position: relative;
+   
+
+     display:block;
+}
+ a {
+    text-decoration: none;
+    color:black ;
+    padding-left:10px;
+    display: block;
+}
+ footer {
+     background-color: #FFFFFF ;
+     font-size: 0.70em;
+     font-style: italic;
+     text-align: center 
+}
+ #wrapper {
+     margin: auto;
+     width: 80%;
+}
+ .wrap{
+     margin-left: 20px;
+}
+ img {
+     height: 50%;
+     width: 100%;
+     padding:0;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     position: relative;
+}
+ a {
+     text-decoration: none;
+     display:block;
+}
+ div {
+     display:inline-block;
+}
+
+ label {
+     padding-right: 20Px;
+}
+ input {
+     padding-left: 10px;
+}
+ @media only screen and (max-width:620px) {
+     #wrapper{
+         width: 100%;
+    }
+     .column{
+         width: 100% !important;
+    }
+}

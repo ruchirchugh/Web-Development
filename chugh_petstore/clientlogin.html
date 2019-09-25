@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pet Store</title>
+<link rel="stylesheet" type="text/css" href="css\pet.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type='text/javascript'>
+function validateForm() {
+    var x = document.forms["myform"]["clientname"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+		}
+if (x.length>15){
+
+
+	alert("lenth should be less than 15");
+        return false;
+	}
+
+var y=document.forms["myform"]["mypet"].value;
+    
+if (y == "") {
+        alert("Name must be filled out");
+        return false;
+		}
+if (y.length>15){
+
+
+	alert("lenth should be less than 15");
+        return false;
+	}
+
+
+
+}
+</script>
+</head>
+<body id="wrapper">
+
+<header><h1>  Client’s Pet Store</h1>
+
+</header>
+
+<div class=row>
+<div class =column id=c1>
+</div>
+<div class =column id=c2>
+<img src=Images/petstorebanner5.png>
+<div class="wrap">
+<p>
+<h2>My Pet</h2>
+</p>
+<article > 
+<p>Required Information is marked with an asterisk (*).</p>
+<table>
+<form  name ="myform" action=“clientlogin.php" method="post" onsubmit="return validateForm()>
+<tr>
+<td>
+
+<labe> Client Name:</label>
+</td>
+<td>
+ <input type=text name=clientname maxlength="15” pattern="[A-Za-z]+" title="Should not contain numbers"required="required">
+</td>
+</tr>
+<tr>
+
+<td>
+
+<labe>*My Pet:</label>
+</td>
+<td>
+<input type=text name=mypet maxlength="15” pattern="[A-Za-z]+"title="Should not contain numbers"required="required">
+</td>
+</tr>
+
+
+<tr>
+<td>
+ <button nname=addnewone  type="submit" form="myform" value="Submit">Add New One</button>
+</td>
+</tr>
+</form>
+</table>
+
+ </article>
+</div>
+<footer>
+<p><i>copyright&copy;2018 Pet Store</i></p>
+<p><a href=“mailto:chugh@ruchir.com”>chugh@ruchir.com</a></p>
+</footer>
+</div>
+</div> 
+
+</body>

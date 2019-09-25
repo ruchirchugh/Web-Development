@@ -1,0 +1,256 @@
+
+
+
+
+
+
+<?php 
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+$firstnameErr = $emailErr = $lastnameErr = $commenterror = "";
+$firstname = $lastname = $email = $phone = $comments = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+$phone=$_POST['phone'];
+
+
+  if (empty($_POST["firstname"])) {
+    $firstnameErr = "Name is required";
+  } else {
+    $firstname = test_input($_POST["firstname"]);
+  }
+
+
+   if (empty($_POST["lastname"])) {
+    $lastnameErr = "Name is required";
+  } else {
+    $lastname = test_input($_POST["lastname"]);
+  }
+
+
+
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email= test_input($_POST["email"]);
+  }
+
+
+if (empty($_POST["comments"])) {
+    $comments = "comments are required";
+  } else {
+    $comments= test_input($_POST["comments"]);
+  }
+
+  $servername = "localhost";
+  $username = "cpses_ruj8j1g6fq";
+  $password = "123456";
+  $dbname = "ruchirch_db";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$sql = "INSERT INTO Contact(fname,lname,email,phone,comments)
+VALUES ('{$firstname}','{$lastname}','{$email}','{$phone}','{$comments}')";
+if ($conn->query($sql) === TRUE) {
+  
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
+echo $firstnameErr;
+echo $lastnameErr;
+echo $commenterror;
+echo $emailErr;
+
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pet Store</title>
+<link rel="stylesheet" type="text/css" href="css\pet.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type='text/javascript'>
+function validateForm() {
+
+
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	var numbers = /^[0-9]+$/;
+    var x = document.forms["myform"]["firstname"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+		}
+if (x.length>15){
+
+
+	alert("lenth should be less than 15");
+        return false;
+	}
+
+var y=document.forms["myform"]["lastname"].value;
+    
+if (y == "") {
+        alert("Name must be filled out");
+        return false;
+		}
+if (y.length>15){
+
+
+	alert("lenth should be less than 15");
+        return false;
+	}
+var z=document.forms["myform"]["email"].value;
+if (z == "") {
+        alert("Name must be filled out");
+        return false;
+		}
+if(!(z.match(mailformat)))
+
+{
+alert("Not valid input format");
+        return false;
+
+}
+
+var v=document.forms["myform"]["phone"].value;
+{
+
+		}
+if (v.length>10){
+
+
+	alert("lenth should be less than 15");
+        return false;
+	}
+
+}
+if(!(v.match(numbers)))
+
+{
+
+
+	alert("phone no should not contain alphabates");
+        return false;
+	}
+
+
+
+</script>
+</head>
+<body id="wrapper">
+
+<header><h1> Pet Store</h1>
+
+</header>
+
+<div class=row>
+<div class =column id=c1>
+<nav class="wrap">
+               <a href=index.php>Home</a>
+               <a href=AboutUs.php>About Us</a>
+               <a href=contactus.php>Contact Us</a>
+               <a href=client.php>Client</a>
+               
+               <a href=service.php>Service</a>
+               <a href=login.php>Login</a>
+            </nav>
+</div>
+<div class =column id=c2>
+<img src=Images/petstorebanner7.png>
+<div class="wrap">
+<p>
+<h2>Contact Us</h2>
+</p>
+<article > 
+<p>Required Information is marked with an asterisk (*).</p>
+<table>
+<form name ="myform" action='contactus.php' method="post" onsubmit="return validateForm()">
+<tr>
+
+<td>
+<label>* First Name: </label>
+</td>
+<td>
+<input type=text name=firstname maxlength="15” pattern="[A-Za-z]+" title="Should not contain numbers"required="required">
+</td>
+</tr>
+<tr>
+
+<td>
+
+<label>* Last Name: </label>
+</td>
+<td>
+<input type=text name=lastname maxlength="15” pattern="[A-Za-z]+"title="Should not contain numbers"required="required">
+</td>
+</tr>
+<tr>
+
+<td>
+
+<label>Email</label>
+</td>
+<td>
+<input type=text name=email pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"title="valid email format required"required="required">
+</td>
+</tr>
+
+<tr>
+
+
+<td>
+
+<label>Phone:</label>
+</td>
+<td>
+<input type=text name=phone maxlength="10”pattern="[0-9]+"title="Should not contain alphabates">
+</td>
+</tr>
+
+
+<tr>
+
+<td>
+
+<label>* Comments:</label>
+</td>
+<td>
+<textarea row=3 name=comments></textarea>
+</td>
+</tr>
+<tr>
+<td>
+ <input type="submit" name="submit" value="Add New One">  
+</td>
+</tr>
+</form>
+</table>
+
+ </article>
+</div>
+<footer>
+<p><i>copyright&copy;2018 Pet Store</i></p>
+<p><a href=“mailto:chugh@ruchir.com”>chugh@ruchir.com</a></p>
+</footer>
+</div>
+</div> 
+
+</body>
